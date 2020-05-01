@@ -1,0 +1,36 @@
+name: 查看通用模板列表
+request:
+    headers:
+        Content-Type: application/json; charset=utf-8
+        User-Agent: Mozilla/5.0 (Windows NT 6.1;  Win64;  x64)  AppleWebKit/537.36
+            (KHTML, Like Gecko) Chrome/75.0.3770.100 Safari/537.36
+        json: ${signFunc_Post(endTime=,keyword=,pageNo=1,pageSize=10,projectId=$projectId,startTime=,templateType=)}
+#         alg:  MD5
+#         endTime:  ''
+#         keyWord:  ''
+#         nonce:  25
+#         pageNo: 1
+#         pageSize: 10
+#         projectId: 3862
+#         sign: ebcc38c3327783a1811400bf9a67d31
+#         startTime:  ''
+#         templateType: ''
+#         timestamp:  1562725112
+        method: POST
+        url:  /field/api/template/list
+validate:
+-    eq:
+      - status_code
+      - 200
+-   eq:
+      - headers.Content-Type
+      - application/json;charset=UTF-8
+-    eq:
+      - json.errorCode
+      - '0'
+-    eq:
+      - json.success
+      - True
+-    eq:
+      - content.msg
+      - 请求成功！

@@ -1,0 +1,32 @@
+name: 初始化文件上传
+base_url: 'http://filev2u.st15.anhouse.com.cn'
+variables:
+  - md5Str: $fileName$contentType$fileSize
+request:
+    headers:
+      Content-Type: application/json;charset=UTF-8
+      User-Agent: Mozilla/5.0(Windows NT 6.1; Win64; x64) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36
+      fileToken:  $fileToken
+    json:
+      contentType: $contentType
+      fileName: $fileName
+      fileSize: $fileSize
+      md5: ${createSign($md5Str)}
+      partSize: 5242880
+      partSum: 1
+    method: POST
+    url: /node/upload/initiate/multipart
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - application/json;charset=UTF-8
+-   eq:
+    - json.errorCode
+    - 0
+-   eq:
+    - json.success
+    - True

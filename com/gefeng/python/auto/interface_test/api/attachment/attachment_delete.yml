@@ -1,0 +1,35 @@
+name: 删除附件
+request:
+  headers:
+    Content-Type: application/json;charset=UTF-8
+    User-Agent: Mozilla/5.0(Windows NT 10.0; WOW64) AppleWebKit/537.36(KHTML,
+        like Gecko) Chrome/71.9.3578.98 Safari/537.36
+    json: ${signFunc_Post(id=$attachmentId,projectId=$projectId,source=1)}
+#   alg: MD5
+#   id: 22107
+#   nonce: 35
+#   projectId: 4196
+#   sign: ddf575c2564557d593ed7b55bccbaf96
+#   source: 1
+#   timestamp: 1566282992
+    method: POST
+    url: /field/api/attachment/delete
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - application/json;charset=UTF-8
+-   eq:
+    - content.errorCode
+    - '0'
+-   eq:
+    - content.success
+    - True
+-   eq:
+    - content.msg
+    - 请求成功！
+-   eq:
+    - content.data
+    - null

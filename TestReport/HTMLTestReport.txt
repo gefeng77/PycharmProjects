@@ -1,0 +1,13 @@
+test_add (__main__.TestFunction) ... ok
+test_minus (__main__.TestFunction) ... ok
+test_multi (__main__.TestFunction) ... ok
+test_divide (__main__.TestFunction) ... ok
+test_add (__main__.TestFunction) ... ok
+test_divide (__main__.TestFunction) ... ok
+test_minus (__main__.TestFunction) ... ok
+test_multi (__main__.TestFunction) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

@@ -1,0 +1,39 @@
+name: 附件上传
+variables:
+    - md5Str: $fileName$contentType$fileSize
+    - list: [{"attachmentKey":'${createSign($md5Str)}', "name":'$name', "suffix":'$suffix'}]
+request:
+    headers:
+        Content-Type: application/json; charset=utf-8
+        User-Agent: Mozilla/5.0 (Windows NT 6.1; WIn64; x64) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36
+    json: ${signFunc_Post(applyTokenType=1,list=$list,projectId=$projectId,useType=21)}
+#     alg: MD5
+#     applyTokenType: 1
+#     list:
+#     -   attachentKey: 6994d696a8217f2ae77e1cf403efbc7d
+#         name: u=666914512,2241933108&fm=26&gp=0
+#         suffix: jpg
+#     nonce: 60
+#     projectId: 3862
+#     sign: 6d17ecea717c7032b32d634023baac8
+#     timestamp: 1564366877
+#     useType: 21
+    method: POST
+    url: /field/api/attachment/applytokens
+validate:
+-     eq:
+      - status_code
+      - 200
+-     eq:
+      - headers.Content-Type
+      - application/json;charset=UTF-8
+-     eq:
+      - json.errorcode
+      - '0'
+-     eq:
+      - json.success
+      - True
+-     eq:
+      - content.msg
+      - 请求成功！

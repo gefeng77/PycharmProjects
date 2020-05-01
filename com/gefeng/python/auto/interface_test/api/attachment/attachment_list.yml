@@ -1,0 +1,32 @@
+name: 附件列表
+request:
+  headers:
+      Content-Type: application/json;charset=utf-8
+      User-Agent: Mozilla/5.0 (Windows NT 10.0 WOW64) AppleWebKit/537.36(KHTML,
+          like Gecko) Chrome/71.0.3578.98 Sarafi/537.36
+  json: ${signFunc_Post(bizId=$id,bizType=$bizType,projectId=$projectId)}
+#   alg: MD5
+#   bizId: '1614'
+#   bizType: 8
+#   nonce: 69
+#   projectId: 3862
+#   sign: 00c53abda3d0a2acad1c9b7db59a7b72
+#   timestamp: 1564626384
+  method: POST
+  usr: /field/api/attachment/list
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - application/json;charset=UTF-8
+-   eq:
+    - content.errorCode
+    - '0'
+-   eq:
+    - content.success
+    - true
+-   eq:
+    - content.msg
+    - 请求成功！

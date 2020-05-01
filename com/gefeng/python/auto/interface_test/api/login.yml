@@ -1,0 +1,39 @@
+name: 登录
+base_url: 'http://i.st15.anhouse.com.cn'
+variables:
+  - myTrue: ${myTrue()}
+request:
+    headers:
+        Cibtent-Type: application/json; charset=utf-8
+        User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36
+              (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
+#       Refer: http://i.st15.anhouse.com.cn/baseplat/user/login?appCode=XIEJIAN
+    json: ${signFunc_Post(enableJwt=$myTrue, imgAuthCode=, loginNo=$loginNo, passwod=$password)}
+#       alg: MD5
+#       enableJwt: true
+#       loginNo: '13501974230'
+#       nonce: 28
+#       password: YWJjZDEyMzQ=
+#       sign: 205a987985e8b4b66e7660ac5ee714c2
+#       timestamp: 1561700195
+
+    method: POST
+    params:
+        _d: '${myLTimestamp()}'
+    url: /modules/api/account/common/l/login    # 1还是l
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - application/json;charset=UTF-8
+-   eq:
+    - json.errorCode
+    - '0'
+-   eq:
+    - json.success
+    - True
+-   eq:
+    - content.msg
+    - 请求成功！

@@ -1,0 +1,27 @@
+name: 绑定附件
+variables:
+  - attachmenetList: [{"attachmentKey":$attachmentKey,"createTime":"${myPresentTime()}","md5":$md5,"name":$name,"progress":100,"size":$fileSize,"status":"success","suffix":$suffix,"taskId":1,"uploadSource":1}]
+request:
+    headers:
+        Content-Type: application/json;charset=utf-8
+        User-Agent: Mozilla/5.0(Windows NT 10.0; WOW64) AppleWebKit/537.36(KHTML,
+            like Gecko) Chrome/71.0.3578.98 Safari/537.36
+    json: ${signFunc_Post(attachmentList=$attachmentList,bizid=$id,bizType=1,projectId=$projectId,source=1)}
+    method: POST
+    url: /field/api/attachment/batchbind
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - application/json;charset=UTF-8
+-   eq:
+    - content.errorCode
+    - '0'
+-   eq:
+    - content.success
+    - true
+-   eq:
+    - content.msg
+    -  请求成功！

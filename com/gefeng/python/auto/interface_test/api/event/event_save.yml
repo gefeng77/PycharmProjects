@@ -1,0 +1,32 @@
+name: 新建事件
+variables:
+    - imgUrl: https://files2d.anhouse.com.cn/node/download/view/$attachmentKey?fileName=$name&fileToken=$fileToken
+    - attachmentList: [{"attachmentKey":$attachmentKey,"createTime":${myPresentTime()},"imgUrl":$imgUrl,"md5":$md5,"name":$name,"progress":100,"size":$fileSize,"status":"success","suffix":$suffix,"taskId":1,"uploadSource":1}]
+    - data: [{"code":"files","value":"[object Object]"},{"code":"wtfl","vlaue":4},{"code":"sm","value":"自动化数据"},{"code":"jjd","value":2},{"code":"mbwz","value":"目标位置"},{"code":"csr","value":"$zxr"},{"code":"gl","value":"-1"},{"code":"glgx","value":"-1"},{"code":"danwenbenshuru_V1","value":"单文本输入"},{"code":"duowenbenshuru_V1","value":"多行文本输入"},{"code":"danxuanxkuang_V1","value":"3"},{"code":"fuxuankuang_V1","value":"1,2,3,4,5"},{"code":"riqixuanze_V1","value":"${myPresentTIme_M()}"],{"code":"riqiqujianxuanze_V1","value":"${myTimeInterval()}"},{"code":"mbmc","value":"$tplName"},{"code":"mc","value":"$evName"},{"code":"zxr","value":"$zxr"},{"code":"zxsj","value":"${myTimeInterval()}"}]
+    - myNone: ${myNone()}
+    - exeStartTime: ${myExeStartTime()}
+    - exeEndtime: ${myExeEndTIme()}
+request:
+    headers:
+        Content-Type: application/json; charset=utf-8
+        User-Agent: Mozilla/5.0(Window NT 6.1; Win64; x64) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
+    json: ${signFun_Post(ticketAttributeLlist=$data,attachmentList=$attchmentList,associate=0,exeEndTime=$exeEndTime,exeStartTime=$exeStartTime,executeBy=$zxr,name=$evName,pageType=2,planId=$myNone,planTreeId=$myNone,projectId=$projectId,templateTypeId=$tplId,templateTypeName=$tplName,updateTIme=$updateTime)}
+    method: POST
+    url:  /field/api/event/save
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - application/json;charset=UTF-8
+-   eq:
+    - content.errorCode
+    - '0'
+-   eq:
+    - content.success
+    - True
+-   eq:
+    - content.msg
+    - 请求成功！

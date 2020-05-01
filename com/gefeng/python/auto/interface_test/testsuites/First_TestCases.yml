@@ -1,0 +1,25 @@
+config:
+  name: "测试用例集"
+  base_url: 'https://i.an2.anhouse.com.cn'
+  variables:
+    random_path: ${random_path()}
+
+testcases:
+-
+  name: "通用模板-事件"
+  testcase: testcases/template.yml
+  parameters:
+    - loginNo-password-projectId:
+      - ['15902112282', 'QWExMjMONTY=', 4439]
+    - title-tplName-parentId-checklistTplId:
+      - [质量事件模板, '质量事件模板_${myTimestamp()}', 28401, '0']
+
+-
+  name: "事件"
+  testcase: testcases/event.yml
+  parameters:
+    - loginNo-password-projectId-zxr:
+      - ['15902112282','QWExMjMONTY=',4439, 311]
+    - evName-title-tplName-parentId-checklistTplId-bizType:
+      - ['质量事件_${myTimestamp()}', 质量事件模板, '质量事件模板_${myTimestamp()}', 28301, '0', 1]
+    - name-suffix-fileName-contentType-fileSize-filePath: ${get_img_detail($random_path)}

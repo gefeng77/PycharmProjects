@@ -1,0 +1,31 @@
+name: 事件详情
+request:
+    headers:
+        Content-Type: application/json; charset=utf-8
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML,
+            like Gecko) Chrome/71.0.3578.98 Safari/537.36
+    json: ${signFunc_Post(id=$id,projectId=$projectId)}
+#   alg: MD5
+#   id: '8102'
+#   nonce: 76
+#   projectId: 4196
+#   sign: 649986b35df40563cd57c917aa0e28e0
+#   timestamp: 1565942392
+    method: POST
+    url:  /field/api/event/detail
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - applicaiton/json;charset=UTF-8
+-   eq:
+    - content.errorCode
+    - '0'
+-   eq:
+    - content.success
+    - true
+-   eq:
+    - content.msg
+    - 请求成功！

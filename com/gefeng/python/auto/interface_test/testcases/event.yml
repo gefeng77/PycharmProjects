@@ -1,0 +1,72 @@
+- config:
+    name: "事件"
+
+- test:
+    name: 上传附件
+    testcase: testcases/attachment_new.yml
+    output:
+      - attachmentKey
+      - fileToken
+      - md5
+
+
+- test:
+    name: 登录
+    api: api/login.yml
+
+
+- test:
+    name: 新建$title
+    api: api/template/template_save.yml
+    extract:
+      - tplId: content.data.id
+
+
+- test:
+    name: 新建事件
+    api: api/event/event_save.yml
+    extract:
+      - id: content.data.id
+
+
+- test:
+    name: 事件详情
+    api: api/event/event_detail.yml
+
+
+- test:
+    name: 附件列表
+    api: api/attachment/attachment_list.yml
+    extract:
+      - attachmentVOList: content.data.attachmentVOList
+
+
+- test:
+    name: 上传附件
+    testcase: testcases/event_update.yml
+    output:
+      - attachmentKey
+      - fileToken
+      - md5
+
+
+- test:
+    name: 登录
+    api: api/login.yml
+
+
+- test:
+    name: 绑定附件
+    api: api/attachment/attachment_list.yml
+
+
+- test:
+    name: 附件列表
+    api: api/attachment/attachment_list.yml
+    extract:
+      - attachmentId: content.data.attachmentVOList.0.id
+
+
+- test:
+    name: 删除附件
+    api: api/attachment/attachment_delete.yml

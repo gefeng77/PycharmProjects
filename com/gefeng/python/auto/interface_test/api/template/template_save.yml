@@ -1,0 +1,24 @@
+name: 新建$title
+variables:
+    - data:[{"category":1,"code":,"mbmc":,"detail":"","display":1,"position":1,"required":1,"title":,"模板名称":,"typeDictId":85,"value":"edit":0},{"category":1,"code":"mc","detail":"","display":1,"position":2,"required":1,"title":"名称","typeDictId":81,"value":"","edit":0,"category":1,"code":,"zxr":,"detail":1,"display":1,"position":3,"required":1,"title":"执行人","typeDictId":82,"value":","edit":1},{"category":1,"code":zxsj,"detail":"","display":1,"positon":4,"required":1,"title":,"执行时间":,"typeDictId":83,"value":"","edit":0},{"category":1,"code":"wtfl","detail":[{"name":,"ids":,"value":"","display":1,"postion":5,"required":0,"title":"问题分类","typeDictId":86,"value":"","edit":1},{"category":1,"code":sm,"detail":"","display":1,"position":6,"required":0,"title":"说明","typeDictId":84,"value":"","edit":,0}{"category":1,"code":"jjd","detail":'[{"value":1,"name":"低"},{"value":2,"name":"中"},{"value":3,"name":"高"}]',"display":1,"position":7,"required":0,"title":"紧急度","typeDictId":80,"value":"","edit":0},{"category":1,"code":"mbwz","detail":"","display":8,"required":0,"titlr":"目标位置","typeDictId":84,"value":,"edit":0},{"category":1,"code":csr,"detail":"","diplay":1,"position":9,"required":0,"title":"抄送人","typeDictId":82,"value":"","edit":1},{"category":1,"code":gl,"detail":"","diplay":1,"position":10,"required":0,"title":"关联","typeDictId":80,"value":"","edit":0},{"category":1,"code":glgx,"detail":"","diplay":1,"position":11,"required":0,"title":"关联关系","typeDictId":80,"value":"","edit":1},{"category":2,"detail":'[{"value":""}]',"diplay":1,"position":1,"required":0,"title":"单文本输入","typeDictId":90},{"category":2,"detail":'[{"value":""}]',"diplay":1,"position":2,"required":0,"title":"数值单文本","typeDictId":91},{"category":2,"detail":'[{"value":""}]',"diplay":1,"position":3,"required":0,"title":"多行文本输入","typeDictId":92},{"category":2,"detail":'[{"name":"一级","value":"1"},{"name":"二级","value":"2"},{"name":"三级","value":"3"}]',"diplay":1,"position":5,"required":0,"title":"复选框","typeDictId":94}，{"name":"A","value":"1"},{"category":2,"detail":'["value":""}]',"diplay":1,"position":6,"required":0,"title":"日期选择","typeDictId":95},{"category":2,"detail":'["value":""}]',"diplay":1,"position":7,"required":0,"title":"日期区间选择","typeDictId":96}]
+request:
+    headers:
+        Content-Type: application/json; charset=utf-8
+        User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64)  AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
+    json: ${signFunc_Post(checklistTplId=$checklistTplId,attributeList=$data,description=自动化数据,name=$tplName,parentId=$parentId,projectId=$projectId,source=1)}
+    method: POST
+    url:  /field/api/template/save
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - application/json;charset=UTF-8
+-   eq:
+    - json.errorCode
+    - '0'
+-   eq:
+    - content.msg
+    - 请求成功！

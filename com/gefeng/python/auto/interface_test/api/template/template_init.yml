@@ -1,0 +1,26 @@
+name: 初始化模板
+request:
+    headers:
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML
+            like Gecko) Chrome/71.0.3578.98 Safari/537.36
+      method: POST
+#       params:
+#           alg: MD5
+#           nonce:  '73'
+#           projectId:  '3862'
+#           sign: e3d37d86359ee39cacfca28aca2c0a
+#           timestamp:  '1565848508'
+      url:  /field/api/template/init/tpl?${signFunc_Get(projectId=$projectId)}
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - header.Content-Type
+    - application/json;charset=UTF-8
+-   eq:
+    - content.success
+    - true
+-   eq:
+    - content.msg
+    - 请求成功！

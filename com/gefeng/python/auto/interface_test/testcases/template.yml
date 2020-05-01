@@ -1,0 +1,21 @@
+- config:
+    name: "通用模板管理-事件"
+
+- test:
+    name: 登录
+    api:  api/login.yml
+
+- test:
+    name: 新建$title
+    api:  api/template/temlate_save.yml
+    extract:
+        - tplId:  content.data.id
+        - typeId: content.data.typeId
+
+- test:
+    name: 查看通用模板列表
+    api:  api/template/template_list.yml
+
+- test:
+    name: 查看通用模板详情
+    api: api/template/temlate_detail.yml

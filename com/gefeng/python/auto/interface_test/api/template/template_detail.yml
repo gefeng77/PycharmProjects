@@ -1,0 +1,25 @@
+name: 查看通用模板详情
+request:
+    headers:
+        User-Agent: Mozilla/5.0 (Windows NT 6.1;  Win64;  x64)  AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
+    method: GET
+#         params:
+#         nonce:  '95'
+#         projectId:  '3862'
+#         sign: 75b1078086b2d361587ddcd18d7abde
+#         timestamp:  '1562725319'
+    url:  /field/api/template/detail/$tplId?${signFunc_Get(projectId=$projetId)}
+validate:
+-     eq:
+      - status_code
+      - 200
+-     eq:
+      - headers.Content-Type
+      - application/json;charset=UTF-8
+-     eq:
+      - json.success
+      - True
+-     eq:
+      - content.msg
+      - 请求成功！

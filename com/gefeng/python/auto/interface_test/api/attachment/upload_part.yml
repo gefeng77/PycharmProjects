@@ -1,0 +1,23 @@
+name: 文件分片上传
+base_url: 'http://filev2u.st15.anhouse.com.cn'
+variables:
+    - fileBinary: ${file_binary($filePath)}
+request:
+    headers:
+        User-Agent: Mozilla/5.0(Windows NT 6.1; Win64; x64) AppleWebKit/537.36
+            (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36
+        fileToken: $fileToken
+    files:
+        file: [$fileName, $fileBinary, $contentType]
+    method: POST
+    params:
+        index: '1'
+        md5: ${file_md5($fileBinary)}
+    url: /node/upload/part
+validate:
+-   eq:
+    - status_code
+    - 200
+-   eq:
+    - headers.Content-Type
+    - application/json;charset=UTF-8
