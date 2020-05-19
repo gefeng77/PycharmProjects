@@ -27,7 +27,18 @@ class test_login(unittest.TestCase):
         sleep(2)
 
     def test_loginfailure(self):
-        self.login()
+        try:
+            self.login()
+            self.driver.current_window_handle
+            error_message = self.login_page.get_errormessage()
+            # self.login_page.confirm_btn()
+            self.assertIn('Username is required', error_message)
 
+        except Exception as e:
+            self.login_page.img_screenshot(u'用户名密码为空')
+        raise e
+
+    def test_bracnch(self):
+        print("Now it is on the new branch.")
 
 
