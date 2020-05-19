@@ -36,7 +36,6 @@ class test_login(unittest.TestCase):
 
         except Exception as e:
             self.login_page.img_screenshot(u'用户名密码为空')
-            self.login(username="username", password="password")
         raise e
 
     def test_bracnch(self):
