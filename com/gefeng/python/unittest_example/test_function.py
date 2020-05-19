@@ -8,8 +8,8 @@ from com.gefeng.python.unittest_example.function import *
 class TestFunction(unittest.TestCase):
 
     # 每执行一个case都会运行一遍
-    # def setUp(self) -> None:
-    #     print("Do something before test, preparing environment")
+    #  def setUp(self):
+    #      print("Do something before test, preparing environment")
 
     # 仅运行一次
     @classmethod
@@ -38,8 +38,8 @@ class TestFunction(unittest.TestCase):
         self.assertEqual(5, divide(10, 2))
         self.assertEqual(2.5, divide(5, 2))
 
-    # def tearDown(self) -> None:
-    #     print("do something after test: clean up")
+    def tearDown(self):
+        print("do something after test--most: clean up")
 
     @classmethod
     def tearDownClass(cls) -> None:

@@ -2,7 +2,7 @@
 
 
 def insert_sort(*args):
-    # 将参数中元祖的值付给数组
+    # 将参数中元组的值付给数组
     list_a = []
     for i in args:
         list_a.append(i)

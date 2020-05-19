@@ -1,0 +1,4 @@
+2020-05-13 18:01:41,320-root-log_test.py[line:41]-INFO-some info message
+2020-05-13 18:01:41,320-root-log_test.py[line:42]-WARNING-some warning message
+2020-05-13 18:01:41,320-root-log_test.py[line:43]-ERROR-some error message
+2020-05-13 18:01:41,320-root-log_test.py[line:44]-CRITICAL-some critical message

@@ -44,7 +44,7 @@ msg.attach(att)
 # 3.--------发送邮件---------
 smtp = smtplib.SMTP()
 smtp.connect(smtpserver)                             # 连接服务器
-smtp.ehlo()                                          # 登录前必须加上L23，L24，否则报错
+smtp.ehlo()                                          # 登录前必须加上L47，L48，否则报错
 smtp.starttls()
 smtp.login(sender, psw)                              # 登录
 try:

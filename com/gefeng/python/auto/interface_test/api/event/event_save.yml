@@ -30,3 +30,8 @@ validate:
 -   eq:
     - content.msg
     - 请求成功！
+- eq: [content.com, "huitongkuaidi"]
+- eq: [content.nu, "350757858666"]
+
+extract:
+    - postid: content.nu

@@ -1,0 +1,4 @@
+2020-05-16 15:13:54,339-root-log.py-INFO-some info message
+2020-05-16 15:13:54,339-root-log.py-WARNING-some warning message
+2020-05-16 15:13:54,339-root-log.py-ERROR-some error message
+2020-05-16 15:13:54,339-root-log.py-CRITICAL-some critical message

@@ -1,6 +1,12 @@
 config:
   name: "测试用例集"
   base_url: 'https://i.an2.anhouse.com.cn'
+
+  parameters:
+      user_id: ${parameterize(user_id.csv)}
+      user_id: ${P(user_id.csv)}    # 简写方式
+    # 引用csv文件语法${P(user_id.csv)}
+
   variables:
     random_path: ${random_path()}
 
@@ -9,7 +15,7 @@ testcases:
   name: "通用模板-事件"
   testcase: testcases/template.yml
   parameters:
-    - loginNo-password-projectId:
+    - loginNo-password-projectId: ${P(xxx.csv)}
       - ['15902112282', 'QWExMjMONTY=', 4439]
     - title-tplName-parentId-checklistTplId:
       - [质量事件模板, '质量事件模板_${myTimestamp()}', 28401, '0']

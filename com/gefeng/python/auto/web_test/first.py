@@ -3,12 +3,17 @@ import time
 from selenium import webdriver
 import logging
 from selenium.webdriver.common.keys import Keys
+import ddt
 
 
 class DriverTest(object):
+    """第一个web自动化的项目"""
 
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        # 加启动配置，不再弹出窗口受自动化控制的信息
+        opt = webdriver.ChromeOptions()
+        opt.add_experimental_option('excludeSwitches', ['enable-automation'])
+        self.driver = webdriver.Chrome(options=opt)
 
     def open_driver(self):
         self.driver.implicitly_wait(30)
@@ -66,6 +71,7 @@ class DriverTest(object):
         time.sleep(2)
         leibie = self.driver.find_element_by_xpath("/html/body/div/div/section/main/div/form/div[2]/div[1]/div[2]/div[2]/div/span/div/span/span[1]")
         leibie.click()
+
 
         # 选择问题分类
         dialog = self.driver.find_element_by_class_name("ant-modal")

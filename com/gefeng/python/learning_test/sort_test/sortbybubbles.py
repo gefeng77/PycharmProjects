@@ -7,10 +7,11 @@ print(list_A)
 for i in range(len(list_A)-1):
     # print(i)
     for j in range(i+1, len(list_A)):
-        print(str(i) + ", " + str(j))
+        # print(str(i) + ", " + str(j))
         if list_A[i] > list_A[j]:
             list_A[i], list_A[j] = list_A[j], list_A[i]
-            print(list_A)
+
+print(list_A)
 
 # 对列表进行反转/倒序
 # list_A.reverse()
