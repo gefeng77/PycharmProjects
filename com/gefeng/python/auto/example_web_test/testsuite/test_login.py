@@ -27,7 +27,7 @@ class test_login(unittest.TestCase):
         sleep(2)
 
     def test_loginfailure(self):
-        self.
+        self.login()
 
 
 
