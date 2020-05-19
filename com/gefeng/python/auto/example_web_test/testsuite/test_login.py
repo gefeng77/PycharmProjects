@@ -39,6 +39,6 @@ class test_login(unittest.TestCase):
         raise e
 
     def test_bracnch(self):
-        print("Now it is on the new branch.")
+        print("Now it is on the message_change branch")
 
 
