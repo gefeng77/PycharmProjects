@@ -36,6 +36,7 @@ class test_login(unittest.TestCase):
 
         except Exception as e:
             self.login_page.img_screenshot(u'用户名密码为空')
+            print("Where should it be saved?")
         raise e
 
 
