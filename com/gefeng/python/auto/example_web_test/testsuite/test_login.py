@@ -36,9 +36,10 @@ class test_login(unittest.TestCase):
 
         except Exception as e:
             self.login_page.img_screenshot(u'用户名密码为空')
+            print("Just for one more time.")
         raise e
 
     def test_bracnch(self):
-        print("Now it is on the new branch.")
+        print("Now it is on the master branch.")
 
 
